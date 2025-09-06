@@ -3,9 +3,21 @@
 body {
     font-family: poppins;
     margin: 10px 80px 10px 80px;
+    background-image: url('../images/background.gif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: white;
 }
 @media (max-width: 768px) {
     body {
         margin: 10px;
+    }
+    .bg-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 }

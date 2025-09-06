@@ -1,0 +1,24 @@
+.productCard .name {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #000;
+}
+.productCard .description {
+    font-size: 1em;
+    color: #555;
+}
+.productCard .price {
+    font-size: 1.5em;
+    color: #000;
+    margin: 10px 0;
+}
+.productCard button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.productCard button:hover {
+    background-color: #218838;
+}
