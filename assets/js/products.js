@@ -54,3 +54,19 @@ let products = [
         price: "$45,000"
     }
 ];
+
+const productsPraceholder = document.getElementById('products-placeholder');
+
+for (let i=0; i<products.length; i++) {
+const product = products[i];
+
+const productDiv = document.createElement('div');
+productDiv.className = 'product';
+
+productDiv.innerHTML = `
+    <h3>${product.name}</h3>
+    <p>${product.description}</p>
+    <p class="price">$${product.price}</p>
+`;
+productsPraceholder.appendChild(productDiv);
+}
