@@ -55,35 +55,39 @@ let products = [
         }
     ];
 
-    const productsPlaceholder = document.getElementById('products-placeholder');
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('product');
 
-    for (let i=0; i<products.length; i++) {
-        const product = products[i];
-
-        const productDiv = document.createElement('div');
-        productDiv.className = 'product';
-
-        productDiv.innerHTML = `
-            <img src="${product.image}">
-            <h3><p>${product.name}</p>
-            <p>${product.description}</p>
-            <p class="price">${product.price}</p>
-            <button class="buy-now">Buy Now</button></h3>
-        `;
-
-        productDiv.addEventListener('click', () => {
-            window.location.href = `single-product.html?product=${encodeURIComponent(product.name)}`;
+    // Fetch navbar
+    fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
         });
 
-        productsPlaceholder.appendChild(productDiv);
-    };
+    // Function to update the main product view
+    function updateMainProduct(product) {
+        document.querySelector('.single-product-image img').src = product.image;
+        document.querySelector('.product-name').textContent = product.name;
+        document.querySelector('.product-description').textContent = product.description;
+        document.querySelector('.product-price').textContent = product.price;
+    }
 
+    // Find the product from the URL or use the first product
+    let initialProduct = products.find(p => p.name === productName) || products[0];
+    updateMainProduct(initialProduct);
+
+    // Slider
     const slider = document.getElementById("slider");
-    products.forEach(p => {
-      const div = document.createElement("div");
-      div.classList.add("slide");
-      div.innerHTML = `<img src="${p.image}" alt="${p.name}">`;
-      slider.appendChild(div);
+    products.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.classList.add("slide");
+        div.innerHTML = `<img src="${p.image}" alt="${p.name}">`;
+        div.addEventListener('click', () => {
+            updateMainProduct(p);
+        });
+        slider.appendChild(div);
     });
 
     let currentIndex = 0;
@@ -92,19 +96,20 @@ let products = [
     const nextBtn = document.querySelector(".next");
 
     function updateSlider() {
-      slider.style.transform = `translateX(-${currentIndex * 20}%)`;
+        slider.style.transform = `translateX(-${currentIndex * 20}%)`;
     }
 
     nextBtn.addEventListener("click", () => {
-      if (currentIndex < slides.length - 5) {
-        currentIndex++;
-        updateSlider();
-      }
+        if (currentIndex < slides.length - 5) {
+            currentIndex++;
+            updateSlider();
+        }
     });
 
     prevBtn.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-      }
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
     });
+});
