@@ -1,0 +1,9 @@
+.product {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 80px;
+    gap: 40px;
+}
+.product img {
+    height: 400px;
+}
