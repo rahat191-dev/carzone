@@ -10,13 +10,7 @@ let products = [
             image: "assets/images/lamborghini/2.png",
             description: "A compact car perfect for city driving.",
             price: "$18,000"
-        },
-        {
-            name: "Lamborghini jet",
-            image: "assets/images/lamborghini/3.png",
-            description: "A compact car perfect for city driving.",
-            price: "$50,000"
-        },
+        },      
         {
             name: "Lamborghini diablo",
             image: "assets/images/lamborghini/4.png",
@@ -55,29 +49,6 @@ let products = [
         }
     ];
 
-    const productsPlaceholder = document.getElementById('products-placeholder');
-
-    for (let i=0; i<products.length; i++) {
-        const product = products[i];
-
-        const productDiv = document.createElement('div');
-        productDiv.className = 'product';
-
-        productDiv.innerHTML = `
-            <img src="${product.image}">
-            <h3><p>${product.name}</p>
-            <p>${product.description}</p>
-            <p class="price">${product.price}</p>
-            <button class="buy-now">Buy Now</button></h3>
-        `;
-
-        productDiv.addEventListener('click', () => {
-            window.location.href = `single-product.html?product=${encodeURIComponent(product.name)}`;
-        });
-
-        productsPlaceholder.appendChild(productDiv);
-    };
-
     const slider = document.getElementById("slider");
     products.forEach(p => {
       const div = document.createElement("div");
@@ -92,13 +63,36 @@ let products = [
     const nextBtn = document.querySelector(".next");
 
     function updateSlider() {
-      slider.style.transform = `translateX(-${currentIndex * 20}%)`;
+      slider.style.transform = `translateX(calc(40% - ${currentIndex * 20}%))`;
+      slides.forEach((slide, index) => {
+        if (index === currentIndex) {
+          slide.classList.add("selected");
+        } else {
+          slide.classList.remove("selected");
+        }
+      });
     }
 
+    function updateMainProduct(product) {
+        document.querySelector('.single-product-image img').src = product.image;
+        document.querySelector('.product-name').textContent = product.name;
+        document.querySelector('.product-description').textContent = product.description;
+        document.querySelector('.product-price').textContent = product.price;
+    }
+
+    slides.forEach((slide, index) => {
+      slide.addEventListener("click", () => {
+        currentIndex = index;
+        updateMainProduct(products[index]);
+        updateSlider();
+      });
+    });
+
     nextBtn.addEventListener("click", () => {
-      if (currentIndex < slides.length - 5) {
+      if (currentIndex < slides.length - 1) {
         currentIndex++;
         updateSlider();
+        updateMainProduct(products[currentIndex]);
       }
     });
 
@@ -106,5 +100,10 @@ let products = [
       if (currentIndex > 0) {
         currentIndex--;
         updateSlider();
+        updateMainProduct(products[currentIndex]);
       }
     });
+
+    // Initial setup
+    updateMainProduct(products[0]);
+    updateSlider();

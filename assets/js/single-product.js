@@ -64,6 +64,13 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+
+            const hamburger = document.getElementById("hamburger");
+            const menu = document.getElementById("hamburger-menu");
+
+            hamburger.addEventListener("click", () => {
+              menu.classList.toggle("active");
+            });
         });
 
     // Function to update the main product view
@@ -97,7 +104,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateSlider() {
         slider.style.transform = `translateX(-${currentIndex * 20}%)`;
+        slides.forEach((slide, index) => {
+            if (index === currentIndex) {
+                slide.classList.add("selected");
+            } else {
+                slide.classList.remove("selected");
+            }
+        });
     }
+
+    slides.forEach((slide, index) => {
+        slide.addEventListener("click", () => {
+            currentIndex = index;
+            updateMainProduct(products[index]);
+            updateSlider();
+        });
+    });
 
     nextBtn.addEventListener("click", () => {
         if (currentIndex < slides.length - 5) {
@@ -112,4 +134,6 @@ document.addEventListener("DOMContentLoaded", function() {
             updateSlider();
         }
     });
+
+    updateSlider();
 });

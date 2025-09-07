@@ -1,10 +1,10 @@
-.product {
+#products-placeholder .product {
     display: flex;
     justify-content: space-between;
     padding-right: 80px;
     gap: 40px;
 }
-.product img {
+#products-placeholder .product img {
     height: 400px;
 }
 
@@ -28,4 +28,9 @@
 .slide img {
     width: 100%;
     height: auto;
+}
+
+.slide.selected {
+    border: 2px solid blue;
+    transform: scale(1.2);
 }

@@ -10,6 +10,7 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: white;
+    overflow: hidden;
 }
 img {
     max-width: 100%;
