@@ -50,6 +50,6 @@
 
 @media (max-width: 768px) {
     .single-product-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }

@@ -63,4 +63,10 @@
     .slide.selected {
         transform: scale(1.2);
     }
+    .single-product-container {
+        order: 2;
+    }
+    .single-product-details {
+        order: 1;
+    }
 }

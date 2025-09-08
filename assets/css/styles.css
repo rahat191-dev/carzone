@@ -3,14 +3,12 @@
 body {
     font-family: poppins;
     margin: 0px 80px;
-    background-color: #121212;
-    background-image: url('../images/background.gif');
+    background-image: url(../images/background.gif);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: white;
-    overflow: hidden;
 }
 img {
     max-width: 100%;
