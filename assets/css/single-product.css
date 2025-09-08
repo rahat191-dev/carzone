@@ -47,3 +47,9 @@
 .single-product-container .buy-now:hover {
     background-color: #e03e00;
 }
+
+@media (max-width: 768px) {
+    .single-product-container {
+        flex-direction: column;
+    }
+}
