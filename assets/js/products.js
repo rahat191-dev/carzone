@@ -107,3 +107,15 @@ let products = [
     // Initial setup
     updateMainProduct(products[0]);
     updateSlider();
+
+    const orderNowBtn = document.querySelector('.buy-now');
+    const orderNowModal = document.getElementById('order-now-modal');
+    const productImage = document.getElementById('product-image');
+    const productName = document.getElementById('product-name');
+
+    orderNowBtn.addEventListener('click', () => {
+        const selectedProduct = products[currentIndex];
+        productImage.src = selectedProduct.image;
+        productName.textContent = selectedProduct.name;
+        orderNowModal.style.display = 'block';
+    });

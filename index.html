@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/product.css">
     <link rel="stylesheet" href="assets/css/single-product.css">
+    <link rel="stylesheet" href="assets/css/popup.css">
 </head>
 <body>
   <div id="navbar-placeholder"></div>
@@ -23,10 +24,59 @@
         <h1 class="product-name"></h1>
         <p class="product-description"></p>
         <p class="product-price"></p>
-        <button class="buy-now">Buy Now</button>
+        <button class="buy-now">Order Now</button>
     </div>
   </div>
+
+  <div id="order-now-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="form-container">
+        <h2>Order Now</h2>
+        <div class="product-details">
+          <img id="product-image" src="" alt="Product Image">
+          <h3 id="product-name"></h3>
+        </div>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <button type="submit">Submit Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="form-container">
+        <h2>Login</h2>
+        <form>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="signup-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="form-container">
+        <h2>Sign Up</h2>
+        <form>
+          <input type="text" placeholder="Name" required>
+          <input type="email" placeholder="Email or Phone" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/js/script.js"></script>
   <script src="assets/js/products.js"></script>
+  <script src="assets/js/popup.js"></script>
 </body>
 </html>
